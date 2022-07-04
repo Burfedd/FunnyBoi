@@ -10,7 +10,7 @@ int main()
 
 	bot.on_slashcommand([](const dpp::slashcommand_t& event) {
 		if (event.command.get_command_name() == "ping") {
-			event.reply("Pong!");
+			event.reply("/tts test");
 		}
 	});
 

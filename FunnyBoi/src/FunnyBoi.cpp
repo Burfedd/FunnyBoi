@@ -21,10 +21,12 @@ int main()
 		}
 	});
 
-	bot.on_message_create([&dist, &rng](const dpp::message_create_t& event) {
-		int generated = dist(rng);
-		if (generated >= 50) {
-			event.reply("Random reply");
+	bot.on_message_create([&dist, &rng, &bot](const dpp::message_create_t& event) {
+		if (event.msg.author != bot.me.id) {
+			int generated = dist(rng);
+			if (generated >= 50) {
+				event.reply("Random reply");
+			}
 		}
 	});
 

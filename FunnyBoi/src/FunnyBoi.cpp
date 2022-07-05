@@ -2,13 +2,15 @@
 
 int main(int argc, char* argv[])
 {
+	std::string token = argv[1];
+
 	// Random
 	std::random_device r_device;
 	std::mt19937 rng(r_device());
 	std::uniform_int_distribution<std::mt19937::result_type> dist(0, 100);
 
 	// Bot
-	dpp::cluster bot(argv[1]);
+	dpp::cluster bot(token);
 	bot.on_log(dpp::utility::cout_logger());
 
 	bot.on_slashcommand([&dist, &rng](const dpp::slashcommand_t& event) {

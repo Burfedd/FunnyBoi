@@ -39,4 +39,4 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
       
     - name: Run
-      run: ./${{github.workspace}}/build/FunnyBoi
+      run: ./${{github.workspace}}/build/FunnyBoi/FunnyBoi

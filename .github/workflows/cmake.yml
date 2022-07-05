@@ -41,4 +41,4 @@ jobs:
     - name: Run
       run: |
         cd ${{github.workspace}}/build/FunnyBoi
-        ./FunnyBoi ${{ secrets.BOT_TOKEN }}
+        ./FunnyBoi ${{ secrets.BOT_TOKEN }} &

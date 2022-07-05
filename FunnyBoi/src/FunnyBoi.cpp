@@ -1,10 +1,20 @@
 ﻿#include "FunnyBoi.h"
 
-const std::string BOT_TOKEN = "bot token";
-const std::string GUILD_ID = "guild id";
-
 int main()
 {
+	// Bot token - ../token.txt
+	std::string botToken;
+	std::ifstream file("../token.txt");
+	if (file.is_open()) {
+		std::getline(file, botToken);
+	}
+	file.close();
+	if (botToken == "Paste_your_token_here") {
+		std::cout << "You didn't specify the bot token! Aborting..." << std::endl;
+		return 0;
+	}
+	const std::string BOT_TOKEN = botToken;
+
 	// Random
 	std::random_device r_device;
 	std::mt19937 rng(r_device());
@@ -12,7 +22,6 @@ int main()
 
 	// Bot
 	dpp::cluster bot(BOT_TOKEN);
-
 	bot.on_log(dpp::utility::cout_logger());
 
 	bot.on_slashcommand([&dist, &rng](const dpp::slashcommand_t& event) {
@@ -40,7 +49,7 @@ int main()
 				dpp::slashcommand("roll", "Rolling a number", bot.me.id)
 			);
 			bot.global_command_create(
-				dpp::slashcommand("ping", "Ping-pong testr", bot.me.id)
+				dpp::slashcommand("ping", "Ping-pong test", bot.me.id)
 			);
 		}
 	});

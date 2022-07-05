@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: clone
-      run: git clone --recurse-submodules https://github.com/Burfedd/FunnyBoi.git
+      run: if cd FunnyBoi; then git pull; else git clone --recurse-submodules https://github.com/Burfedd/FunnyBoi.git; fi
     - name: cmake
       run: cmake FunnyBoi/.
     - name: make

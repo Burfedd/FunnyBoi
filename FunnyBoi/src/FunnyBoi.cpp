@@ -13,7 +13,6 @@ int main()
 		std::cout << "You didn't specify the bot token! Aborting..." << std::endl;
 		return 0;
 	}
-	const std::string BOT_TOKEN = botToken;
 
 	// Random
 	std::random_device r_device;
@@ -21,7 +20,7 @@ int main()
 	std::uniform_int_distribution<std::mt19937::result_type> dist(0, 100);
 
 	// Bot
-	dpp::cluster bot(BOT_TOKEN);
+	dpp::cluster bot(botToken);
 	bot.on_log(dpp::utility::cout_logger());
 
 	bot.on_slashcommand([&dist, &rng](const dpp::slashcommand_t& event) {

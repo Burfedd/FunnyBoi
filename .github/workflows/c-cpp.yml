@@ -15,7 +15,7 @@ jobs:
     - name: clone
       run: git clone --recurse-submodules https://github.com/Burfedd/FunnyBoi.git
     - name: cmake
-      run: cmake .
+      run: cmake FunnyBoi/.
     - name: make
       run: make
     - name: run

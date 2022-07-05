@@ -1,26 +1,14 @@
 ﻿#include "FunnyBoi.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-	// Bot token - ../token.txt
-	std::string botToken;
-	std::ifstream file("../token.txt");
-	if (file.is_open()) {
-		std::getline(file, botToken);
-	}
-	file.close();
-	if (botToken == "Paste_your_token_here") {
-		std::cout << "You didn't specify the bot token! Aborting..." << std::endl;
-		return 0;
-	}
-
 	// Random
 	std::random_device r_device;
 	std::mt19937 rng(r_device());
 	std::uniform_int_distribution<std::mt19937::result_type> dist(0, 100);
 
 	// Bot
-	dpp::cluster bot(botToken);
+	dpp::cluster bot(argv[1]);
 	bot.on_log(dpp::utility::cout_logger());
 
 	bot.on_slashcommand([&dist, &rng](const dpp::slashcommand_t& event) {
